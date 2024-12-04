@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Trendz</title>
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    
+
+</head>
+
+<body>
+
+    <header>
+        <div class="parent">
+            <div class="left-content">
+                <p>Fashion <span class="trendz">Trendz</span></p>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+            <label for="menu-toggle" class="hamburger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </label>
+            <div class="right-content">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="cart.html">Cart</a>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+
+    <h1 class="deals" id="home">Exclusive Deals</h1>
+    <section class="top-content">
+        <div class="first-image">
+            <img src="./images/home-exclusive-image1.jpg" alt="">
+            <h3>ankle-strap heel</h3>
+            <p>Aldo</p>
+            <div class="price-rating">
+                <span class="price">₹2999</span>
+                <span class="rating">4.0<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+            </div>
+        </div>
+        <div class="first-image">
+            <img src="./images/home-exclusive-image2.jpg" alt="">
+            <h3>gem stone crystal bracelet</h3>
+            <p>Faship</p>
+            <div class="price-rating">
+                <span class="price">₹2500</span>
+                <span class="rating">5.0<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+            </div>
+        </div>
+        <div class="first-image">
+            <!-- <img src="./images/cart.jpg" alt=""> -->
+            <img src="./images/lipstick.jpg" alt="">
+            <h3>lipstick</h3>
+            <p>GUCCI</p>
+            <div class="price-rating">
+                <span class="price">₹947.37</span>
+                <span class="rating">4.5<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+
+
+            </div>
+        </div>
+        <div class="first-image">
+            <img src="./images/w-blue frock.jpg" alt="">
+            <h3>Blue frock</h3>
+            <p>Zara</p>
+            <div class="price-rating">
+                <span class="price">₹1500</span>
+                <span class="rating">4.5<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+            </div>
+        </div>
+    </section>
+
+    <h1 style="text-Align:center" id="products" class="products">All Products</h1>
+    <aside class="middle-content">
+        <div class="aside-search">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search products...">
+            </div>
+            <div class="category-section">
+                <h2>Categories</h2>
+                <ul>
+                    <li><a href="#" data-category="fashion-clothing">Fashion Clothing</a></li>
+                    <li><a href="#" data-category="cosmetics">Cosmetics</a></li>
+                    <li><a href="#" data-category="stylish-footwear">Stylish Footwear</a></li>
+                    <li><a href="#" data-category="jewellery">Jewellery</a></li>
+                    <li><a href="#" data-category="all">All Products</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="aside-images">
+            <div class="first-image" data-category="fashion-clothing" data-id="product1" data-name="Fancy Red Suit"
+                data-price="3000" data-brand="Stylewhile" data-rating="4.4">
+                <img src="./images/women-fashion-image8.jpg" alt="">
+                <h3>Fancy Red suit</h3>
+                <p>Stylewhile</p>
+                <div class="price-rating">
+                    <span class="price">₹3000</span>
+                    <span class="rating">4.4<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-image9.jpg" alt="" data-id="product2" data-name="Fancy rhinestone bracelet"
+                    data-price="5000" data-brand="EMANDLIVJEWELS" data-rating="4.7">
+                <h3>rhinestone bracelet</h3>
+                <p>TRiXY</p>
+                <div class="price-rating">
+                    <span class="price">₹5000</span>
+                    <span class="rating">4.7<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/makeupkit.jpg" alt="">
+                <h3>MakeUp-Kit</h3>
+                <p>Maybelline</p>
+                <div class="price-rating">
+                    <span class="price">₹1000</span>
+                    <span class="rating">4.3<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image4.jpg" alt="">
+                <h3>Tie-Up Heels</h3>
+                <p>Zyla</p>
+                <div class="price-rating">
+                    <span class="price">₹2000</span>
+                    <span class="rating">3.9<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-image9.jpg" alt="">
+                <h3>elegant Yellow Shirt</h3>
+                <p>Veo Moda</p>
+                <div class="price-rating">
+                    <span class="price">₹869</span>
+                    <span class="rating">3.4<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-image3.jpg" alt="">
+                <h3>Rhinestone bracelet</h3>
+                <p>TRiXY</p>
+                <div class="price-rating">
+                    <span class="price">₹4000</span>
+                    <span class="rating">4.5<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-image1.jpg" alt="">
+                <h3>White Floral Dress</h3>
+                <p>Claura</p>
+                <div class="price-rating">
+                    <span class="price">₹699</span>
+                    <span class="rating">3.5<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/makeupkit3.jpeg" alt="">
+                <h3>Make-Up Kit</h3>
+                <p>L'orealp</p>
+                <div class="price-rating">
+                    <span class="price">₹2500</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-image12.jpg" alt="">
+                <h3>MultiColor Brass Bangles</h3>
+                <p>German Silver</p>
+                <div class="price-rating">
+                    <span class="price">₹500</span>
+                    <span class="rating">4.1<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image8.jpg" alt="">
+                <h3>Pink Sports Sandals</h3>
+                <p>Yoho</p>
+                <div class="price-rating">
+                    <span class="price">₹639</span>
+                    <span class="rating">4.2<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/w-floral dress" alt="">
+                <h3>Floral Long Gown</h3>
+                <p>Claura</p>
+                <div class="price-rating">
+                    <span class="price">₹750</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span> <!-- Rating without stars -->
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/cosmetic-image12.jpg" alt="">
+                <h3>Natural Facial Cream</h3>
+                <p>Khadi Natural</p>
+                <div class="price-rating">
+                    <span class="price">₹1599</span>
+                    <span class="rating">4.3<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/makeup-items.jpg" alt="">
+                <h3>Compact powder and brush</h3>
+                <p>Loreal</p>
+                <div class="price-rating">
+                    <span class="price">₹999</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/j-diamond open leaf ring.jpg" alt="">
+                <h3>Open leaf diamond ring</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹5999</span>
+                    <span class="rating">4.2<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image15.jpg" alt="">
+                <h3>Ankel strap high heel</h3>
+                <p>Aldoo</p>
+                <div class="price-rating">
+                    <span class="price">₹3999</span>
+                    <span class="rating">4.6<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-boyfriend-image21.jpg" alt="">
+                <h3>Women boyfriend jeans</h3>
+                <p>Levi's</p>
+                <div class="price-rating">
+                    <span class="price">₹1999</span>
+                    <span class="rating">4.5<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-antiquee bangles-image20.jpg" alt="">
+                <h3>antiquee bangles</h3>
+                <p>1gram gold</p>
+                <div class="price-rating">
+                    <span class="price">₹1599</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-wear12.jpg" alt="">
+                <h3>Arixty blazer for women office</h3>
+                <p>Allen Solly</p>
+                <div class="price-rating">
+                    <span class="price">₹2999</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/eye-liner.jpg" alt="">
+                <h3>Eye liner</h3>
+                <p>tarte</p>
+                <div class="price-rating">
+                    <span class="price">₹299</span>
+                    <span class="rating">3.4<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/j-elegant faux pearl chain.jpg" alt="">
+                <h3>elegant faux pearl chain</h3>
+                <p>gold</p>
+                <div class="price-rating">
+                    <span class="price">₹10999</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/facecreams 2.jpg" alt="">
+                <h3>Face moisturizer</h3>
+                <p>Dr Kelly Mattone</p>
+                <div class="price-rating">
+                    <span class="price">₹655</span>
+                    <span class="rating">3.9<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image13.jpg" alt="">
+                <h3>Aldridge women's sandal</h3>
+                <p>Nike</p>
+                <div class="price-rating">
+                    <span class="price">₹999</span>
+                    <span class="rating">4.2<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-gigh-rise stretchable jeans-image18.jpg" alt="">
+                <h3>high-rise stretchable jeans</h3>
+                <p>Lee</p>
+                <div class="price-rating">
+                    <span class="price">₹1299</span>
+                    <span class="rating">4.3<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-5 stone thin bangle-image18.jpg" alt="">
+                <h3>5stone thin bangle</h3>
+                <p>Gold</p>
+                <div class="price-rating">
+                    <span class="price">₹6655</span>
+                    <span class="rating">4.9<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-daimond earring studs-image1.jpg" alt="">
+                <h3>elegant look small studs</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹655</span>
+                    <span class="rating">3.9<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image11.jpg" alt="">
+                <h3>High heel open Toe sandals</h3>
+                <p>Nike</p>
+                <div class="price-rating">
+                    <span class="price">₹1999</span>
+                    <span class="rating">3.9<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/powder and lipstick.jpg" alt="">
+                <h3>Lipstick</h3>
+                <p>Red Lips</p>
+                <div class="price-rating">
+                    <span class="price">₹599</span>
+                    <span class="rating">4.2<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-american daimond bangles(nykaa)-image16.jpg" alt="">
+                <h3>nykaa American bangles</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹19890</span>
+                    <span class="rating">4.5<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-wideleg-image20.jpg" alt="">
+                <h3>Wideleg jeans</h3>
+                <p>Pepe</p>
+                <div class="price-rating">
+                    <span class="price">₹1099</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/cosmetic-image1" alt="">
+                <h3>Red Lipstick</h3>
+                <p>Typsy Beauty</p>
+                <div class="price-rating">
+                    <span class="price">₹999</span>
+                    <span class="rating">5.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellary">
+                <img src="./images/jewellery-daimond  maang tikka-image18.jpg" alt="">
+                <h3>Maang tikks</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹8655</span>
+                    <span class="rating">4,2<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image12.jpg" alt="">
+                <h3>Heels Sandal</h3>
+                <p>Todhwear</p>
+                <div class="price-rating">
+                    <span class="price">₹394</span>
+                    <span class="rating">4.6<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/eye shades.jpg" alt="">
+                <h3>Eye Shades</h3>
+                <p>Matt</p>
+                <div class="price-rating">
+                    <span class="price">₹799</span>
+                    <span class="rating">4.6<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/j-rose gold wedding necklace.jpg" alt="">
+                <h3>Rose gold wedding necklace</h3>
+                <p>Gold</p>
+                <div class="price-rating">
+                    <span class="price">₹16655</span>
+                    <span class="rating">4.2<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/welcome-image1.jpeg" alt="">
+                <h3>polyester Cor for women</h3>
+                <p>Roadster</p>
+                <div class="price-rating">
+                    <span class="price">₹296y1</span>
+                    <span class="rating">4.5<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-image1.jpg" alt="">
+                <h3>White stone earrings</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹5655</span>
+                    <span class="rating">3.9<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image3.jpg" alt="">
+                <h3>Stylish Block RED Heel Sandal</h3>
+                <p>Nike</p>
+                <div class="price-rating">
+                    <span class="price">₹599</span>
+                    <span class="rating">3.6<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/face creams.jpg" alt="">
+                <h3>Natural skincare products</h3>
+                <p>Derma</p>
+                <div class="price-rating">
+                    <span class="price">₹527</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-image2.jpg" alt="">
+                <h3>gem stone crystal neckset</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹18599</span>
+                    <span class="rating">4.7<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-bootleg-image19.jpg" alt="">
+                <h3>bootleg jeans</h3>
+                <p>Allen Solley</p>
+                <div class="price-rating">
+                    <span class="price">₹1599</span>
+                    <span class="rating">3.9<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-american daimond studded bangles-image19.jpg" alt="">
+                <h3>Studded bangles</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹19999</span>
+                    <span class="rating">4.6<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image14.jpg" alt="">
+                <h3>plaform heels</h3>
+                <p>nike</p>
+                <div class="price-rating">
+                    <span class="price">₹1999</span>
+                    <span class="rating">4.3<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/w-frock.jpg" alt="">
+                <h3>Maroon frock</h3>
+                <p>cotton fabric</p>
+                <div class="price-rating">
+                    <span class="price">₹999</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/eye-shades2.jpg" alt="">
+                <h3>Satin EyeShadow</h3>
+                <p>Matte</p>
+                <div class="price-rating">
+                    <span class="price">₹899</span>
+                    <span class="rating">4.3<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/j-diamond pearl chain and earring.jpg" alt="">
+                <h3>pearl chain and erarings</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹29999</span>
+                    <span class="rating">4.5<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/j-traditional choker.jpg" alt="">
+                <h3>White beads choker</h3>
+                <p>Gold</p>
+                <div class="price-rating">
+                    <span class="price">₹10099</span>
+                    <span class="rating">4.4<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="stylish-footwear">
+                <img src="./images/footwear-image7.jpg" alt="">
+                <h3>Sky blue heels</h3>
+                <p>Todhwear</p>
+                <div class="price-rating">
+                    <span class="price">₹1099</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-straightfit-image20.jpg" alt="">
+                <h3>Women straightfir jeans</h3>
+                <p>Pepe</p>
+                <div class="price-rating">
+                    <span class="price">₹1299</span>
+                    <span class="rating">3.9<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/w-sage green anarkali dress.jpg" alt="">
+                <h3>Green anarkali dress</h3>
+                <p>cotton fabric</p>
+                <div class="price-rating">
+                    <span class="price">₹1999</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/j-rhinestone decor studs.jpg" alt="">
+                <h3>decor studs</h3>
+                <p>rhineStone</p>
+                <div class="price-rating">
+                    <span class="price">₹2599</span>
+                    <span class="rating">4.2<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/w-floral kurti.jpg" alt="">
+                <h3>Floral kurti</h3>
+                <p>cotton fabric</p>
+                <div class="price-rating">
+                    <span class="price">₹1199</span>
+                    <span class="rating">4.0<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="jewellery">
+                <img src="./images/jewellery-image6.jpg" alt="">
+                <h3>Blue stone earrings</h3>
+                <p>diamond</p>
+                <div class="price-rating">
+                    <span class="price">₹7999</span>
+                    <span class="rating">4.1<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="fashion-clothing">
+                <img src="./images/women-fashion-highrise-image19.jpg" alt="">
+                <h3>Highrise jeans</h3>
+                <p>Allen solley</p>
+                <div class="price-rating">
+                    <span class="price">₹1999</span>
+                    <span class="rating">4.2<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+            <div class="first-image" data-category="cosmetics">
+                <img src="./images/lipstick-cosmetics.jpeg" alt="">
+                <h3>Red lipstick</h3>
+                <p>Matt</p>
+                <div class="price-rating">
+                    <span class="price">₹699</span>
+                    <span class="rating">4.3<i class="fa-solid fa-star"></i></span>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <section>
+        <div id="productModel" class="model">
+            <button class="close-btn" onclick="closeModel()">X</button>
+            <div class="model-content">
+                <div class="model-left">
+                    <img id="modelImage" src="" alt="">
+                </div>
+                <div class="model-right">
+                    <h3 id="modelTitle"></h3>
+                    <p id="modelDescription"></p>
+                    <div class="price-rating">
+                        <span id="modelPrice"></span>
+                        <span id="modelRating"></span>
+                    </div>
+                    <button id="addToCartBtn">Add to Cart</button>
+                    <button id="buyNowBtn" onclick="BuyNow()">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="home.js"></script>
+
+
+</body>
+
+</html>

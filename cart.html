@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Trendz</title>
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="home.css">
+    <style>
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <div class="parent">
+            <div class="left-content">
+                <p>Fashion <span class="trendz">Trendz</span></p>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+            <label for="menu-toggle" class="hamburger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </label>
+            <div class="right-content">
+                <a href="home.html">Home</a>
+                <a href="#products">Products</a>
+                <a href="cart.html">Cart</a>
+                <button onclick="logout()" class="logout">Logout</button>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="cartContainer">
+        <h1 style="text-align:center">Your Cart</h1>
+        <div id="cartItems" class="cart-items-container"></div>
+        <div class="cart-summary" id="cartSummary">
+        </div>
+    </div>
+    <script>
+        function displayCart() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartSummary = document.getElementById('cartSummary');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            cart = cart.map(item => ({
+                ...item,
+                quantity: item.quantity || 1,
+                price: typeof item.price === "string" && item.price[0] === "₹"
+                    ? parseFloat(item.price.slice(1))
+                    : parseFloat(item.price) || 0
+            }));
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '';
+                cartSummary.innerHTML = '';
+
+                const imgElement = document.createElement('img');
+                imgElement.src = "./images/cart.jpg";
+                imgElement.classList.add('cart-image');
+                imgElement.style.width = "500px";
+                imgElement.style.display = "block";
+                imgElement.style.margin = "20px auto";
+
+                const message = document.createElement('p');
+                message.textContent = "Your cart is empty.";
+                message.style.textAlign = "center";
+                message.style.fontSize = "18px";
+                message.style.marginTop = "10px";
+
+                const browseButton = document.createElement('button');
+                browseButton.textContent = "Shop Now";
+                browseButton.style.display = "block";
+                browseButton.style.margin = "20px auto";
+                browseButton.style.padding = "10px 0px";
+                browseButton.style.fontSize = "16px";
+                browseButton.style.backgroundColor = "#007BFF";
+                browseButton.style.color = "white";
+                browseButton.style.border = "none";
+                browseButton.style.borderRadius = "5px";
+                browseButton.style.cursor = "pointer";
+                browseButton.addEventListener('click', () => {
+                    window.location.href = "home.html";
+                });
+
+                cartItemsContainer.appendChild(imgElement);
+                cartItemsContainer.appendChild(message);
+                cartItemsContainer.appendChild(browseButton);
+
+                return;
+            }
+            cartItemsContainer.innerHTML = '';
+            cartSummary.innerHTML = '';
+            let totalItems = 0;
+            let totalPrice = 0;
+            cart.forEach((item, index) => {
+                totalItems += item.quantity;
+                totalPrice += item.price * item.quantity;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    <div class="cart-item-left">
+                        <img src="${item.image}" alt="${item.title}" width="300px">
+                    </div>
+                    <div class="cart-item-right">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                        <div class="price-rating">
+                            <span class="price">Price: ₹${item.price.toFixed(2)}</span>
+                            <span class="rating">${item.rating || 'No rating available'}</span>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="decrease" data-index="${index}">-</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="increase" data-index="${index}">+</button>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemDiv);
+            });
+            cartSummary.innerHTML = `
+                <p>Total Items: ${totalItems}</p>
+                <p>Total Price: ₹${totalPrice.toFixed(2)}</p>
+                <button onclick="BuyNow()" class="buy-now">Buy Now</button>
+            `;
+            document.querySelectorAll('.increase').forEach(button =>
+                button.addEventListener('click', () => updateQuantity(button.dataset.index, 1))
+            );
+
+            document.querySelectorAll('.decrease').forEach(button =>
+                button.addEventListener('click', () => updateQuantity(button.dataset.index, -1))
+            );
+        }
+        function updateQuantity(index, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (!cart[index]) return;
+
+            cart[index].quantity = (cart[index].quantity || 1) + change;
+
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+
+        function BuyNow() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.map(item => item.title).join(", ");
+            const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+            // Save the details in localStorage for use in payment.html
+            localStorage.setItem('paymentDetails', JSON.stringify({
+                items: totalItems,
+                price: totalPrice.toFixed(2),
+            }));
+
+            window.location.href = "payment.html";
+        }
+
+        window.onload = displayCart;
+
+
+        function logout() {
+            const isLogout = confirm("Are you sure you want to logout?");
+            if (isLogout) {
+                alert("Succefully log")
+                window.location.href = "signup.html"
+            } else {
+                window.location.href = "cart.html"
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

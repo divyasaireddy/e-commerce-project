@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Trendz</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="parent">
+            <div class="left-content">
+                <p>Fashion <span class="trendz">Trendz</span></p>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+            <label for="menu-toggle" class="hamburger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </label>
+            <div class="right-content">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#cart">Cart</a>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="welcome-section">
+            <div class="welcome-left-section">
+                <h1>Welcome to Fashion Trendz!</h1>
+                <p>At Fashion Trendz, we bring you the latest trends in fashion and lifestyle at your fingertips.
+                    Whether you're looking for chic outfits, stylish accessories, or seasonal collections, we’ve got
+                    you covered. Elevate your wardrobe with our curated selection that blends quality, style, and
+                    affordability.Stay trendy, shop smart, and make every day fashionable!</p>
+                <button onclick="shopNow()">Shop Now</button>
+            </div>
+            <div class="welcome-right-section">
+                <div class="image-container">
+                    <img src="./images/welcome-image3" alt="" class="background-img" width="400px">
+                    <img src="./images/welcome-image5.jpg" alt="image middle-img" class="middle-img" width="500px">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        function shopNow() {
+            window.location.href = "home.html";
+        }
+        function logout() {
+            const isLogout = confirm("Are you sure you want to logout?");
+            if (isLogout) {
+                alert("Succefully logged out")
+                window.location.href = "signup.html"
+            } else {
+                window.location.href = "main.html"
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

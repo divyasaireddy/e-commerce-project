@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link rel="stylesheet" type="text/css" href="payment.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="left">
+                <h3>BILLING ADDRESS</h3>
+                <form id="billingForm">
+                    Full name
+                    <input type="text" name="fullname" placeholder="Enter name" required>
+                    <label for=""> Email</label>
+                    <input type="email" name="email" placeholder="Enter email" required>
+                    Address
+                    <input type="text" name="address" placeholder="Enter address" required>
+                    City
+                    <input type="text" name="city" placeholder="Enter City" required>
+                    <div id="zip">
+                        <label>
+                            State
+                            <select name="state" required>
+                                <option value="">Choose State..</option>
+                                <option>Telangana</option>
+                                <option>Andhrapradesh</option>
+                            </select>
+                        </label>
+                        <label>
+                            Zip code
+                            <input type="number" name="zipcode" placeholder="Zip code" required>
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="right">
+                <h3>PAYMENT</h3>
+                <form id="checkoutForm">
+                    Accepted Card <br>
+                    <img src="./images/card2.png" width="100">
+                    <img src="./images/card1.png" width="50">
+                    <br><br>
+                    Credit card number
+                    <input type="text" name="cardnumber" placeholder="Enter card number" required>
+                    Exp month
+                    <input type="text" name="expmonth" placeholder="Enter Month" required>
+                    <div id="zip">
+                        <label>
+                            Exp year
+                            <select name="expyear" required>
+                                <option value="">Choose Year..</option>
+                                <option>2023</option>
+                                <option>2024</option>
+                                <option>2025</option>
+                                <option>2026</option>
+                            </select>
+                        </label>
+                        <label>
+                            CVV
+                            <input type="number" name="cvv" placeholder="CVV" required>
+                        </label>
+                    </div>
+                    <input type="submit" value="Proceed to Payment">
+                </form>
+                <div id="paymentSummary"></div>
+            </div>
+        </div>
+    </header>
+
+    <div id="orderPopup" style="display: none;">
+        <div id="orderSummary">
+            <h3>Order Summary</h3>
+            <div id="orderDetails"></div>
+            <p id="totalAmount"></p>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const summaryDiv = document.getElementById('paymentSummary');
+            let totalAmount = 0;
+            let itemTitles = "";
+
+            if (cart.length > 0) {
+                cart.forEach((item, index) => {
+                    const itemTitle = item.title || `Item ${index + 1}`;
+                    const price = typeof item.price === "string" && item.price.startsWith("₹")
+                        ? parseFloat(item.price.slice(1))
+                        : parseFloat(item.price) || 0;
+                    const quantity = parseInt(item.quantity) || 1;
+
+                    itemTitles += `${index + 1}. ${itemTitle} (x${quantity})<br>`;
+
+                    totalAmount += price * quantity;
+                });
+
+                summaryDiv.innerHTML = `
+            <h3>Payment Summary</h3>
+            <p><strong>Items:</strong><br>${itemTitles}</p>
+            <p><strong>Total Amount:</strong> ₹${totalAmount.toFixed(2)}</p>
+        `;
+            } else {
+                summaryDiv.innerHTML = `
+            <h3>Payment Summary</h3>
+            <p><strong>Items:</strong> No items found in the cart.</p>
+            <p><strong>Total Amount:</strong> ₹0.00</p>
+        `;
+            }
+        };
+
+        document.getElementById("checkoutForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length > 0) {
+                const totalAmount = cart.reduce((sum, item) => {
+                    const price = typeof item.price === "string" && item.price.startsWith("₹")
+                        ? parseFloat(item.price.slice(1))
+                        : parseFloat(item.price) || 0;
+                    const quantity = parseInt(item.quantity) || 1;
+                    return sum + price * quantity;
+                }, 0);
+
+                const itemDetails = cart
+                    .map((item, index) => `${index + 1}. ${item.title || `Item ${index + 1}`} (x${item.quantity || 1})`)
+                    .join("\n");
+
+                alert(`Payment Successful! Order placed for the following items:\n${itemDetails}\nTotal Amount Paid: ₹${totalAmount.toFixed(2)}`);
+
+                localStorage.removeItem('cart');
+                window.location.href = "home.html";
+            } else {
+                alert("No items found in the cart. Redirecting to home...");
+                window.location.href = "home.html";
+            }
+        });
+
+    </script>
+</body>
+
+</html>

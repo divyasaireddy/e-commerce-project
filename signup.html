@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Trendz</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <img src="./images/signUpPageImage.jpg" alt="Image" width="600px">
+
+        <form action="" id="signup">
+            <h1>Fashion <span class="trendz">Trendz</span></h1>
+
+            <span>USERNAME</span>
+            <input type="text" name="" id="username" placeholder="Username" required>
+            <span id="usernameError"></span>
+
+            <span>EMAIL</span>
+            <input type="email" name="" id="email" placeholder="Email" required>
+            <span id="emailError"></span>
+
+            <span>PASSWORD</span>
+            <input type="password" name="" id="password" placeholder="Password" required>
+            <span id="passwordError"></span>
+
+            <input type="submit" value="Sign Up">
+
+            <a href="login.html">Existing User? Login</a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signup").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const inputName = /^[a-zA-Z]{3,}$/;
+            const inputEmail = /^[a-zA-Z0-9._+-=]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const inputPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[a-zA-Z0-9!@#$%^&*()_+]{8,}$/;
+
+            document.getElementById("usernameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("passwordError").textContent = "";
+
+            const name = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            let isValid = true;
+
+            if (!inputName.test(name)) {
+                document.getElementById("usernameError").textContent =
+                    "Name should contain at least 3 characters.";
+                isValid = false;
+            }
+
+            if (!inputEmail.test(email)) {
+                document.getElementById("emailError").textContent = "Please enter a valid email.";
+                isValid = false;
+            }
+
+            if (!inputPassword.test(password)) {
+                document.getElementById("passwordError").textContent =
+                    "Password should contain at least 1 uppercase, 1 lowercase, 1 special character, and 1 digit.";
+                isValid = false;
+            }
+
+            const storedUsername = localStorage.getItem("name"); //Divya
+            const storedEmail = localStorage.getItem("email");  //divya12@gmail.com
+
+            if (storedUsername==name &&  storedEmail==email) {
+                document.getElementById("usernameError").textContent = "User already exists. Please login.";
+                isValid = false;
+                
+            }
+
+            if (isValid) {
+                localStorage.setItem("name", name);
+                localStorage.setItem("password", password);
+                localStorage.setItem("email",email)
+                window.location.href = "login.html"; 
+            }
+        });
+    </script>
+</body>
+
+</html>
