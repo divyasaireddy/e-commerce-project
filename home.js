@@ -89,7 +89,6 @@ function addToCart() {
         description: document.getElementById('modelDescription').innerText,
         price: document.getElementById('modelPrice').innerText,
         rating: document.getElementById('modelRating').innerText,
-        buynow:document.getElementById('buyNowBtn').innerText,
     };
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
