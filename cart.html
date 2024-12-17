@@ -7,6 +7,8 @@
     <title>Fashion Trendz</title>
     <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="home.css">
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWh8YkCDAQloJQYCTk20em1YyC2-rWqXs2Q&s">
+
     <style>
     </style>
 
@@ -150,29 +152,11 @@
         }
 
 
-       /* function BuyNow() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const totalItems = cart.map(item => item.title).join(", ");
-            const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
-            // Save the details in localStorage for use in payment.html
-            localStorage.setItem('paymentDetails', JSON.stringify({
-                items: totalItems,
-                price: totalPrice.toFixed(2),
-            }));
-
-            window.location.href = "payment.html";
-        }*/
-
         function BuyNow() {
-            // Get the cart from localStorage
-            const cart = JSON.parse(localStorage.getItem('cart')) || []; // Get current cart from localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || []; 
     
             if (cart.length > 0) {
-                // Store the cart details in localStorage under 'paymentDetails'
                 localStorage.setItem('paymentDetails', JSON.stringify(cart));
-    
-                // Redirect to payment page
                 window.location.href = "payment.html";
             } else {
                 alert("Your cart is empty.");
