@@ -150,7 +150,7 @@
         }
 
 
-        function BuyNow() {
+       /* function BuyNow() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const totalItems = cart.map(item => item.title).join(", ");
             const totalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -162,6 +162,21 @@
             }));
 
             window.location.href = "payment.html";
+        }*/
+
+        function BuyNow() {
+            // Get the cart from localStorage
+            const cart = JSON.parse(localStorage.getItem('cart')) || []; // Get current cart from localStorage
+    
+            if (cart.length > 0) {
+                // Store the cart details in localStorage under 'paymentDetails'
+                localStorage.setItem('paymentDetails', JSON.stringify(cart));
+    
+                // Redirect to payment page
+                window.location.href = "payment.html";
+            } else {
+                alert("Your cart is empty.");
+            }
         }
 
         window.onload = displayCart;

@@ -1,7 +1,7 @@
 function logout() {
     const isLogout = confirm("Are you sure you want to logout?");
     if (isLogout) {
-        alert("Succefully log")
+        alert("Succefully logged off")
         window.location.href = "signup.html"
     } else {
         window.location.href = "home.html"
@@ -80,9 +80,6 @@ products.forEach(product => {
 });
 
 
-function BuyNow(){
-    window.location.href="buyNow.html"
-}
 
 
 function addToCart() {
@@ -105,3 +102,5 @@ function addToCart() {
 }
 
 document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+
+

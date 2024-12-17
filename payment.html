@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Gateway</title>
     <link rel="stylesheet" type="text/css" href="payment.css">
 </head>
-
 <body>
-    <header>
+    <!-- <section>
         <div class="container">
             <div class="left">
                 <h3>BILLING ADDRESS</h3>
                 <form id="billingForm">
                     Full name
-                    <input type="text" name="fullname" placeholder="Enter name" required>
-                    <label for=""> Email</label>
+                    <input type="text" name="fullname" placeholder="Enter name" required>   
+                    Email
                     <input type="email" name="email" placeholder="Enter email" required>
                     Address
                     <input type="text" name="address" placeholder="Enter address" required>
@@ -67,10 +65,75 @@
                     </div>
                     <input type="submit" value="Proceed to Payment">
                 </form>
-                <div id="paymentSummary"></div>
             </div>
         </div>
-    </header>
+    </section> -->
+    <section>
+        <div class="container">
+            <form id="checkoutForm">
+                <div class="form-container">
+                    <div class="left">
+                        <h3>BILLING ADDRESS</h3>
+                        <label>Full name</label>
+                        <input type="text" name="fullname" placeholder="Enter name" required>   
+                        
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Enter email" required>
+                        
+                        <label>Address</label>
+                        <input type="text" name="address" placeholder="Enter address" required>
+                        
+                        <label>City</label>
+                        <input type="text" name="city" placeholder="Enter City" required>
+                        
+                        <div id="zip">
+                            <label>State</label>
+                            <select name="state" required>
+                                <option value="">Choose State..</option>
+                                <option>Telangana</option>
+                                <option>Andhrapradesh</option>
+                            </select>
+                            
+                            <label>Zip code</label>
+                            <input type="number" name="zipcode" placeholder="Zip code" required>
+                        </div>
+                    </div>
+    
+                    <div class="right">
+                        <h3>PAYMENT</h3>
+                        <label>Accepted Card</label><br>
+                        <img src="./images/card2.png" width="100">
+                        <img src="./images/card1.png" width="50"><br><br>
+                        
+                        <label>Credit card number</label>
+                        <input type="text" name="cardnumber" placeholder="Enter card number" required>
+                        
+                        <label>Exp month</label>
+                        <input type="text" name="expmonth" placeholder="Enter Month" required>
+    
+                        <div id="zip">
+                            <label>Exp year</label>
+                            <select name="expyear" required>
+                                <option value="">Choose Year..</option>
+                                <option>2023</option>
+                                <option>2024</option>
+                                <option>2025</option>
+                                <option>2026</option>
+                            </select>
+                            
+                            CVV
+                            <input type="number" name="cvv" placeholder="CVV" required>
+                        </div>
+    
+                        <input type="submit" value="Proceed to Payment">
+                    </div>
+                </div>
+            </form>
+            <div id="paymentSummary"></div>
+        </div>
+    </section>
+    
+   
 
     <div id="orderPopup" style="display: none;">
         <div id="orderSummary">
@@ -79,6 +142,10 @@
             <p id="totalAmount"></p>
         </div>
     </div>
+
+    <div id="paymentSummary"></div>
+
+
 
     <script>
         window.onload = () => {
@@ -95,22 +162,24 @@
                         : parseFloat(item.price) || 0;
                     const quantity = parseInt(item.quantity) || 1;
 
-                    itemTitles += `${index + 1}. ${itemTitle} (x${quantity})<br>`;
+                    itemTitles += `${index + 1}. ${itemTitle} (${quantity})<br>`;
 
                     totalAmount += price * quantity;
                 });
 
                 summaryDiv.innerHTML = `
-            <h3>Payment Summary</h3>
-            <p><strong>Items:</strong><br>${itemTitles}</p>
-            <p><strong>Total Amount:</strong> ₹${totalAmount.toFixed(2)}</p>
+            <h3 style="font-size:16px;">Payment Summary</h3>
+            <p style="font-size:15px;"><strong>Items:</strong><br>${itemTitles}</p>
+            <p style="font-size:16px; margin-bottom:1rem;"> <strong>Total Amount:</strong> ₹${totalAmount.toFixed(2)}</p>
+    
         `;
             } else {
                 summaryDiv.innerHTML = `
-            <h3>Payment Summary</h3>
-            <p><strong>Items:</strong> No items found in the cart.</p>
-            <p><strong>Total Amount:</strong> ₹0.00</p>
-        `;
+    <h3 style="font-size:16px;">Payment Summary</h3>
+    <p style="font-size:15px;"><strong>Items:</strong><br>${itemTitles}</p>
+    <p style="font-size:16px;"><strong>Total Amount:</strong> ₹${totalAmount.toFixed(2)}</p>
+`;
+
             }
         };
 
@@ -128,7 +197,7 @@
                 }, 0);
 
                 const itemDetails = cart
-                    .map((item, index) => `${index + 1}. ${item.title || `Item ${index + 1}`} (x${item.quantity || 1})`)
+                    .map((item, index) => `${index + 1}. ${item.title || `Item ${index + 1}`} (${item.quantity || 1})`)
                     .join("\n");
 
                 alert(`Payment Successful! Order placed for the following items:\n${itemDetails}\nTotal Amount Paid: ₹${totalAmount.toFixed(2)}`);
@@ -140,8 +209,7 @@
                 window.location.href = "home.html";
             }
         });
-
+        
     </script>
 </body>
-
 </html>

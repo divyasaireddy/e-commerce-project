@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-header {
+section {
     width: 100vw;
     min-height: 100vh;
     background-image: url("https://img.freepik.com/premium-vector/payment-solutions-icons_24908-70817.jpg?semt=ais_hybrid");
@@ -23,21 +23,37 @@ header {
     align-items: flex-start;
     padding: 0.5rem 1.5rem;
 }
+#billingForm{
+    font-size: 15px;
+}
+#checkoutForm{
+    font-size: 15px;
+}
 .left {
     flex-basis: 50%;
 }
+.left h3{
+    font-size: 16px;
+    margin-top: 0.5rem;
+}
 .right {
     flex-basis: 50%;
+}
+.right h3{
+    font-size: 16px;
+    margin-top: 0.5rem;
 }
 form {
     padding: 1rem;
 }
 h3 {
-    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     color: #2c3e50;
 }
+
 form input[type="text"],
 form input[type="number"],
+form input[type='email'],
 form select {
     width: 100%;
     padding: 0.5rem 0.7rem;
@@ -114,3 +130,102 @@ form input {
         overflow-x: hidden;
     }
 }
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+form {
+    width: 100%;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.left, .right {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"], input[type="email"], input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#zip {
+    display: flex;
+    gap: 15px;
+}
+
+#zip label {
+    flex: 1;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #003d7a;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left, .right {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+
+
