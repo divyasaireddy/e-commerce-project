@@ -6,6 +6,8 @@
     <title>Payment Gateway</title>
     <link rel="stylesheet" type="text/css" href="payment.css">
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWh8YkCDAQloJQYCTk20em1YyC2-rWqXs2Q&s">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 <body>
@@ -125,7 +127,7 @@
             }
         };
 
-        document.getElementById("checkoutForm").addEventListener("submit", (event) => {
+        /* document.getElementById("checkoutForm").addEventListener("submit", (event) => {
             event.preventDefault();
 
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -150,7 +152,58 @@
                 alert("No items found in the cart. Redirecting to home...");
                 window.location.href = "home.html";
             }
+        }); */
+
+        document.getElementById("checkoutForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+        
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length > 0) {
+                const totalAmount = cart.reduce((sum, item) => {
+                    const price = typeof item.price === "string" && item.price.startsWith("₹")
+                        ? parseFloat(item.price.slice(1))
+                        : parseFloat(item.price) || 0;
+                    const quantity = parseInt(item.quantity) || 1;
+                    return sum + price * quantity;
+                }, 0);
+        
+                const itemDetails = cart
+                    .map((item, index) => `${index + 1}. ${item.title || `Item ${index + 1}`} (${item.quantity || 1})`)
+                    .join("\n");
+        
+                Swal.fire({
+                    title: 'Payment Successful!',
+                    text: `Order placed for the following items:\n${itemDetails}\nTotal Amount Paid: ₹${totalAmount.toFixed(2)}`,
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    showClass: {
+                        popup: 'animate__animated animate__zoomIn animate__fast'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__zoomOut animate__fast'
+                    }
+                }).then(() => {
+                    localStorage.removeItem('cart');  // Clear the cart from localStorage
+                    window.location.href = "home.html";  // Redirect to home page
+                });
+            } else {
+                Swal.fire({
+                    title: 'No items found!',
+                    text: 'Redirecting to home...',
+                    icon: 'info',
+                    confirmButtonText: 'OK',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeIn animate__fast'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOut animate__fast'
+                    }
+                }).then(() => {
+                    window.location.href = "home.html";  // Redirect to home page
+                });
+            }
         });
+        
         
     </script>
 </body>

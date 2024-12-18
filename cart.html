@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fashion Trendz</title>
     <link rel="stylesheet" href="cart.css">
+    <!-- <link rel="stylesheet" href="main.css"> -->
     <link rel="stylesheet" href="home.css">
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWh8YkCDAQloJQYCTk20em1YyC2-rWqXs2Q&s">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
     <style>
     </style>
@@ -16,6 +19,8 @@
 </head>
 
 <body>
+    
+
     <header>
         <div class="parent">
             <div class="left-content">
@@ -31,11 +36,10 @@
                 <a href="home.html">Home</a>
                 <a href="#products">Products</a>
                 <a href="cart.html">Cart</a>
-                <button onclick="logout()" class="logout">Logout</button>
+                <button onclick="logout()">Logout</button>
             </div>
         </div>
     </header>
-
 
     <div class="cartContainer">
         <h1 style="text-align:center">Your Cart</h1>
@@ -166,16 +170,40 @@
         window.onload = displayCart;
 
 
-        function logout() {
-            const isLogout = confirm("Are you sure you want to logout?");
-            if (isLogout) {
-                alert("Succefully log")
-                window.location.href = "signup.html"
-            } else {
-                window.location.href = "cart.html"
-            }
 
+        function logout() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You are about to log out from your account.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, log out!',
+                cancelButtonText: 'No, stay logged in!',
+                reverseButtons: true,  
+                showClass: {
+                    popup: 'animate__animated animate__fadeInUp animate__slow'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutDown animate__slow'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Logged Off!',
+                        text: 'You have successfully logged out.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        window.location.href = 'signup.html';
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire('Cancelled', 'You are still logged in.', 'info').then(() => {
+                        window.location.href = 'home.html';
+                    });
+                }
+            });
         }
+        
 
     </script>
 </body>

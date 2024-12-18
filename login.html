@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWh8YkCDAQloJQYCTk20em1YyC2-rWqXs2Q&s">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
     
 </head>
 
@@ -31,31 +36,117 @@
             <a href="signup.html">New to Fashion Trendz? Create an account</a>
         </form>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- 
     <script>
         document.getElementById("login").addEventListener("submit", (event) => {
             event.preventDefault();
-
-            const storedUserName = localStorage.getItem("name");//userinput what user is enterd
+        
+            const storedUserName = localStorage.getItem("name"); // User input saved in local storage
             const storedPassword = localStorage.getItem("password");
-
+        
             const enteredUserName = document.getElementById("username").value.trim();
             const enteredPassword = document.getElementById("password").value.trim();
-
+        
+            // Clear previous error messages
             document.getElementById("usernameError").textContent = "";
             document.getElementById("passwordError").textContent = "";
-
+        
             if (enteredUserName !== storedUserName) {
                 document.getElementById("usernameError").textContent = "User not found. Please register first.";
             } else if (enteredPassword !== storedPassword) {
                 document.getElementById("passwordError").textContent = "Incorrect password. Please try again.";
             } else {
-                alert("Logged in successfully!");
-                window.location.href = "main.html"; 
-
+                // SweetAlert for successful login
+                Swal.fire({
+                    title: "Success!",
+                    text: "Logged in successfully!",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirect after confirmation
+                        window.location.href = "main.html";
+                    }
+                });
             }
         });
+        
+    </script> -->
+
+    <script>
+        document.getElementById("login").addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            // Retrieve stored username and password
+            const storedUserName = localStorage.getItem("name");
+            const storedPassword = localStorage.getItem("password");
+
+            // Get user input
+            const enteredUserName = document.getElementById("username").value.trim();
+            const enteredPassword = document.getElementById("password").value.trim();
+
+            // Clear previous error messages
+            document.getElementById("usernameError").textContent = "";
+            document.getElementById("passwordError").textContent = "";
+
+            // SweetAlert2 for feedback messages
+            if (!storedUserName || enteredUserName !== storedUserName) {
+                Swal.fire({
+                    title: "User Not Found",
+                    text: "Please register first to access your account.",
+                    icon: "warning",
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown animate__slow'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp animate__slow'
+                    },
+                    // Preventing page content from shifting
+                    position: 'fixed',
+                    backdrop: false,
+                    allowOutsideClick: true
+                });
+            } else if (enteredPassword !== storedPassword) {
+                Swal.fire({
+                    title: "Incorrect Password",
+                    text: "The password you entered is incorrect. Please try again.",
+                    icon: "error",
+                    showClass: {
+                        popup: 'animate__animated animate__shakeX animate__slow'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp animate__slow'
+                    }, 
+                    position: 'fixed',
+                    backdrop: false,
+                    allowOutsideClick: true
+                });
+            } else {
+                Swal.fire({
+                    title: "Login Successful!",
+                    text: "Welcome back!",
+                    icon: "success",
+                    showClass: {
+                        popup: 'animate__animated animate__zoomIn animate__fast'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__zoomOut animate__fast'
+                    },
+                    position: 'fixed',
+                    backdrop: false,
+                    allowOutsideClick: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "main.html";
+                    }
+                });
+            }
+        });
+            
     </script>
+
+
 </body>
 
 </html>
