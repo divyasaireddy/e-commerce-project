@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fashion Trendz</title>
     <link rel="stylesheet" href="cart.css">
-    <!-- <link rel="stylesheet" href="main.css"> -->
-    <link rel="stylesheet" href="home.css">
-    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWh8YkCDAQloJQYCTk20em1YyC2-rWqXs2Q&s">
+    <link rel="stylesheet" href="main.css">
+    <!-- <link rel="stylesheet" href="home.css"> -->
+    <link rel="icon"
+        href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWh8YkCDAQloJQYCTk20em1YyC2-rWqXs2Q&s">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
 
     <style>
     </style>
@@ -19,7 +20,7 @@
 </head>
 
 <body>
-    
+
 
     <header>
         <div class="parent">
@@ -82,7 +83,7 @@
                 browseButton.textContent = "Shop Now";
                 browseButton.style.display = "block";
                 browseButton.style.margin = "20px auto";
-                browseButton.style.padding = "10px 0px";
+                browseButton.style.padding = "10px 10px";
                 browseButton.style.fontSize = "16px";
                 browseButton.style.backgroundColor = "#007BFF";
                 browseButton.style.color = "white";
@@ -115,7 +116,7 @@
                     </div>
                     <div class="cart-item-right">
                         <h3>${item.title}</h3>
-                        <p>${item.description}</p>
+                       
                         <div class="price-rating">
                             <span class="price">Price: ₹${item.price.toFixed(2)}</span>
                             <span class="rating">${item.rating || 'No rating available'}</span>
@@ -129,11 +130,18 @@
                 `;
                 cartItemsContainer.appendChild(itemDiv);
             });
+            /* cartSummary.innerHTML = `
+                 <p>Total Items: ${totalItems}</p>
+                 <p>Total Price: ₹${totalPrice.toFixed(2)}</p>
+                 <button onclick="BuyNow()" class="buy-now">Buy Now</button>
+             `;*/
             cartSummary.innerHTML = `
-                <p>Total Items: ${totalItems}</p>
-                <p>Total Price: ₹${totalPrice.toFixed(2)}</p>
-                <button onclick="BuyNow()" class="buy-now">Buy Now</button>
-            `;
+         <div class="cart-summary-container">
+        <p>Total Items: ${totalItems}</p>
+        <p>Total Price: ₹${totalPrice.toFixed(2)}</p>
+         <button onclick="BuyNow()" class="buy-now">Buy Now</button>
+        </div>`;
+
             document.querySelectorAll('.increase').forEach(button =>
                 button.addEventListener('click', () => updateQuantity(button.dataset.index, 1))
             );
@@ -157,8 +165,8 @@
 
 
         function BuyNow() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || []; 
-    
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
             if (cart.length > 0) {
                 localStorage.setItem('paymentDetails', JSON.stringify(cart));
                 window.location.href = "payment.html";
@@ -179,7 +187,7 @@
                 showCancelButton: true,
                 confirmButtonText: 'Yes, log out!',
                 cancelButtonText: 'No, stay logged in!',
-                reverseButtons: true,  
+                reverseButtons: true,
                 showClass: {
                     popup: 'animate__animated animate__fadeInUp animate__slow'
                 },
@@ -203,7 +211,7 @@
                 }
             });
         }
-        
+
 
     </script>
 </body>

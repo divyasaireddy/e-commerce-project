@@ -97,23 +97,40 @@ function openModel(product) {
     const model = document.getElementById('productModel');
     const modelImage = document.getElementById('modelImage');
     const modelTitle = document.getElementById('modelTitle');
+    const modelBrand=document.getElementById("brand")
     const modelDescription = document.getElementById('modelDescription');
     const modelPrice = document.getElementById('modelPrice');
     const modelRating = document.getElementById('modelRating');
 
     const imgSrc = product.querySelector('img').src;
     const title = product.querySelector('h3').innerText;
-    const description = product.querySelector('p').innerText;
+    const brand=product.querySelector('p').innerText
+    const description = product.querySelector('#description').innerText;
     const price = product.querySelector('.price').innerText;
     const rating = product.querySelector('.rating').innerText;
 
     modelImage.src = imgSrc;
     modelTitle.innerText = title;
+    modelBrand.innerText=brand;
     modelDescription.innerText = description;
-    modelPrice.innerText = `${price}`;
-    modelRating.innerText = `${rating}`;
+    modelPrice.innerText =`${ "price:",price}`;
+    modelRating.innerText = `${"rating:",rating}`;
 
     model.style.display = 'flex';
+    // modelDescription.style.textAlign="justify"
+    // modelDescription.style.setProperty('text-align', 'justify', 'important');
+    modelBrand.style.color="black"
+    modelDescription.style.color="black"
+    modelDescription.style.fontFamily="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+    modelBrand.style.fontFamily="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif"
+
+
+    if (window.innerWidth < 527) {
+        modelDescription.style.display = 'none';
+    } else {
+        modelDescription.style.display = 'block';
+    }
+
 }
 
 function closeModel() {

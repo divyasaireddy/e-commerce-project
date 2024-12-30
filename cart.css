@@ -90,7 +90,7 @@
   font-size: 16px;
 }
 
-button {
+.decrease,.increase,.buy-now {
   background: #1a73e8;
   color: #fff;
   border: none;
@@ -114,6 +114,18 @@ h1 {
   display: block;
   margin: 20px auto;
 }
+.cart-summary-container {
+  margin: 20px; 
+}
+
+.cart-summary-container p {
+  margin: 10px 0; 
+}
+
+.cart-summary-container .buy-now {
+  margin-top: 10px; 
+}
+
 
 @media screen and (max-width:320px){
   .cart-item{
