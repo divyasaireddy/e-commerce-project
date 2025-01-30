@@ -11,6 +11,7 @@ body {
 }
 
 
+
 .container {
     /* position:center; */
     display: flex;
@@ -102,6 +103,9 @@ span {
     animation: spin 1s linear infinite; 
     margin: 0 auto;
 }
+
+
+
 
 
 @keyframes spin {
